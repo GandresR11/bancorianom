@@ -1,39 +1,43 @@
-<!-- ===================== js/login.js ===================== -->
-/*
-  Demo login: consulta la pestaña "ingresos" para validar.
-  Tras login exitoso, redirige a profile.html
-*/
-const form = document.getElementById('loginForm');
-const statusEl = document.getElementById('loginStatus');
+const SHEET_URL = 'https://spreadsheets.google.com/feeds/list/13H0POzXRXQ57pizP1WNYb6Wu7XdTZXIdNz71QNWtHXE/od6/public/values?alt=json';
 
-const SHEET_ID  = '1_PVAMz08cWlU8hvcvwIRuyMTskB5DT-zwP2nTY5DQd4';
-const LOGIN_TAB = 'ingresos';
-const LOGIN_URL = `https://opensheet.elk.sh/${SHEET_ID}/${LOGIN_TAB}`;
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const res = await fetch(SHEET_URL);
+    const data = await res.json();
+    const entries = data.feed.entry;
 
-form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const user = data.get('user');
-  const pass = data.get('pass');
-  statusEl.textContent = 'Verificando…';
-  try {
-    const resp = await fetch(LOGIN_URL);
-    if (!resp.ok) throw new Error('Network error');
-    const rows = await resp.json();
-    const found = rows.find(r => r.user === user && r.pass === pass);
-    if (found) {
-      localStorage.setItem('session', JSON.stringify(found));
-      // redirigir al perfil
-      window.location.href = 'profile.html';
+    const user = entries.find(row => row.gsx$usuario.$t === username && row.gsx$clave.$t === password);
+
+    if (user) {
+      localStorage.setItem('userData', JSON.stringify(user));
+      window.location.href = 'dashboard.html';
     } else {
-      statusEl.textContent = 'Credenciales incorrectas';
+      document.getElementById('login-error').innerText = 'Usuario o clave incorrectos';
     }
-  } catch (err) {
-    console.error(err);
-    statusEl.textContent = 'Error de conexión';
-  }
-});
+  });
+}
 
-/*
-- Columnas requeridas en "ingresos": user | pass | nombre
-*/
+const userData = JSON.parse(localStorage.getItem('userData'));
+if (userData && document.body.classList.contains('dashboard-page')) {
+  document.getElementById('user-name').innerText = userData.gsx$nombre.$t;
+  document.getElementById('nombre').innerText = userData.gsx$nombre.$t;
+  document.getElementById('apellido').innerText = userData.gsx$apellido.$t;
+  document.getElementById('correo').innerText = userData.gsx$correo.$t;
+  document.getElementById('ingresos').innerText = userData.gsx$ingresos.$t;
+  document.getElementById('egresos').innerText = userData.gsx$egresos.$t;
+
+  const solicitudes = document.getElementById('solicitudes');
+  Object.keys(userData).forEach(key => {
+    if (key.startsWith('gsx$solicitud')) {
+      const li = document.createElement('li');
+      li.textContent = userData[key].$t;
+      solicitudes.appendChild(li);
+    }
+  });
+} else if (document.body.classList.contains('dashboard-page')) {
+  window.location.href = 'index.html';
+}
