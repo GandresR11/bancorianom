@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logout-btn');
 
     // ** IMPORTANTE: Reemplaza con la URL de tu Web App de Google Apps Script **
-    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoF5gMjtly0IN5uxv56V7h3nwq8AfYfIvXL9dgqZecGJvAgV0mIVIeiO4ush6Hz6Z0/exec';
+    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNDwVY2l8ZXjsuT76sB6dbdIIFgobLeULZofTpKtGckJDYa3w8_J1SMX705R0i6uM5FA/exec';
 
     let currentUser = null; // Almacenará los datos del usuario logueado
 
