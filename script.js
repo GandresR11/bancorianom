@@ -54,4 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+function cerrarSesion() {
+  localStorage.removeItem('userData');
+  window.location.href = 'index.html';
+}
 
