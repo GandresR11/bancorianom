@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Panel de administración y saldos de usuario.">
-  <link rel="stylesheet" href="style.css" />
-  <title>Autenticación</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Portal de Usuarios</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
-<body>
-  <div class="container">
-    <div id="login-container">
-      <h2>Iniciar Sesión</h2>
-      <form id="login-form">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required />
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required />
-        <button type="submit">Iniciar Sesión1</button>
-      </form>
-      <div id="login-error" class="error"></div>
+<body class="login-page">
+  <div class="container fade-in">
+    <h1>Ingreso al Portal</h1>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Usuario" required>
+      <input type="password" id="password" placeholder="Clave" required>
+      <button type="submit">Ingresar</button>
+    </form>
+    <div class="actions">
+      <button id="register-btn">Registrar</button>
+      <button id="recover-btn">¿Olvidaste tu clave?</button>
     </div>
-
-    <div id="dashboard" style="display: none;">
-      <h2>Bienvenido, <span id="user-name"></span></h2>
-      <p><strong>Rol:</strong> <span id="user-role"></span></p>
-      <p><strong>Saldo Total:</strong> <span id="user-balance"></span></p>
-      <p><strong>Detalle de Saldos:</strong> <span id="user-detail"></span></p>
-      <p><strong>Solicitudes Realizadas:</strong> <span id="user-requests"></span></p>
-      <button id="logout-btn">Cerrar Sesión</button>
-    </div>
+    <p id="login-error"></p>
   </div>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
