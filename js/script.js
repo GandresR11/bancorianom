@@ -1,4 +1,18 @@
-const SHEET_URL = 'https://spreadsheets.google.com/feeds/list/13H0POzXRXQ57pizP1WNYb6Wu7XdTZXIdNz71QNWtHXE/od6/public/values?alt=json';
+const SHEET_URL = 'https://docs.google.com/spreadsheets/d/13H0POzXRXQ57pizP1WNYb6Wu7XdTZXIdNz71QNWtHXE/gviz/tq?tqx=out:json&sheet=Usuarios';
+
+async function getSheetData() {
+  const res = await fetch(SHEET_URL);
+  const text = await res.text();
+  const json = JSON.parse(text.substring(47).slice(0, -2));
+  const cols = json.table.cols.map(c => c.label.toLowerCase().replace(/\s+/g, ''));
+  const rows = json.table.rows.map(row =>
+    row.c.reduce((obj, val, i) => {
+      obj[cols[i]] = val ? val.v : '';
+      return obj;
+    }, {})
+  );
+  return rows;
+}
 
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
@@ -6,11 +20,9 @@ if (loginForm) {
     e.preventDefault();
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
-    const res = await fetch(SHEET_URL);
-    const data = await res.json();
-    const entries = data.feed.entry;
+    const users = await getSheetData();
 
-    const user = entries.find(row => row.gsx$usuario.$t === username && row.gsx$clave.$t === password);
+    const user = users.find(u => u.usuario === username && u.clave === password);
 
     if (user) {
       localStorage.setItem('userData', JSON.stringify(user));
@@ -23,18 +35,18 @@ if (loginForm) {
 
 const userData = JSON.parse(localStorage.getItem('userData'));
 if (userData && document.body.classList.contains('dashboard-page')) {
-  document.getElementById('user-name').innerText = userData.gsx$nombre.$t;
-  document.getElementById('nombre').innerText = userData.gsx$nombre.$t;
-  document.getElementById('apellido').innerText = userData.gsx$apellido.$t;
-  document.getElementById('correo').innerText = userData.gsx$correo.$t;
-  document.getElementById('ingresos').innerText = userData.gsx$ingresos.$t;
-  document.getElementById('egresos').innerText = userData.gsx$egresos.$t;
+  document.getElementById('user-name').innerText = userData.nombre;
+  document.getElementById('nombre').innerText = userData.nombre;
+  document.getElementById('apellido').innerText = userData.apellido;
+  document.getElementById('correo').innerText = userData.correo;
+  document.getElementById('ingresos').innerText = userData.ingresos;
+  document.getElementById('egresos').innerText = userData.egresos;
 
   const solicitudes = document.getElementById('solicitudes');
   Object.keys(userData).forEach(key => {
-    if (key.startsWith('gsx$solicitud')) {
+    if (key.startsWith('solicitud')) {
       const li = document.createElement('li');
-      li.textContent = userData[key].$t;
+      li.textContent = userData[key];
       solicitudes.appendChild(li);
     }
   });
