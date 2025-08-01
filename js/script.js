@@ -1,17 +1,14 @@
-const SHEET_URL = 'https://docs.google.com/spreadsheets/d/13H0POzXRXQ57pizP1WNYb6Wu7XdTZXIdNz71QNWtHXE/gviz/tq?tqx=out:json&sheet=Usuarios';
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzylAPVfvUj8uCDBCr94AuwEn_W8_WDnR0LoN-Hp3y1RobUMYwAHr4ka6PBOTYdMzXDVw/exec'; // Reemplaza con tu URL de Apps Script publicada
 
 async function getSheetData() {
-  const res = await fetch(SHEET_URL);
-  const text = await res.text();
-  const json = JSON.parse(text.substring(47).slice(0, -2));
-  const cols = json.table.cols.map(c => c.label.toLowerCase().replace(/\s+/g, ''));
-  const rows = json.table.rows.map(row =>
-    row.c.reduce((obj, val, i) => {
-      obj[cols[i]] = val ? val.v : '';
-      return obj;
-    }, {})
-  );
-  return rows;
+  try {
+    const res = await fetch(SHEET_SCRIPT_URL);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error('Error al obtener los datos:', err);
+    return [];
+  }
 }
 
 const loginForm = document.getElementById('login-form');
