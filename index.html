@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1Administración de Usuarios</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Panel de administración y saldos de usuario.">
+  <link rel="stylesheet" href="style.css" />
+  <title>Autenticación</title>
 </head>
 <body>
-    <div class="container">
-        <section id="login-section" class="active">
-            <div class="login-card">
-                <div class="logo-placeholder">
-                    <img src="images/logo.svg.jpg" alt="Logo">
-                </div>
-                <h2>Bienvenido</h2>
-                <p>Ingresa tus credenciales para acceder</p>
-                <form id="login-form">
-                    <div class="input-group">
-                        <label for="username">Usuario</label>
-                        <input type="text" id="username" placeholder="Tu nombre de usuario" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" placeholder="Tu contraseña" required>
-                    </div>
-                    <button type="submit" class="btn primary-btn">Iniciar Sesión</button>
-                    <div id="login-error" class="error-message"></div>
-                </form>
-            </div>
-        </section>
-
-        <section id="dashboard-section">
-            <header class="dashboard-header">
-                <div class="user-info">
-                    <h1 id="user-full-name"></h1>
-                    <span id="user-role"></span>
-                </div>
-                <button class="btn logout-btn" id="logout-btn">Cerrar Sesión</button>
-            </header>
-            <div class="dashboard-content">
-                <div class="dashboard-block" id="saldo-total-block">
-                    <h3>Saldo Total</h3>
-                    <p id="total-balance">$0.00</p>
-                    <div class="icon-placeholder green"></div>
-                </div>
-                <div class="dashboard-block" id="saldo-detallado-block">
-                    <h3>Saldo Detallado</h3>
-                    <ul id="detailed-balance-list">
-                        </ul>
-                    <div class="icon-placeholder blue"></div>
-                </div>
-                <div class="dashboard-block" id="solicitudes-block">
-                    <h3>Solicitudes Realizadas</h3>
-                    <ul id="requests-list">
-                        </ul>
-                    <div class="icon-placeholder grey"></div>
-                </div>
-            </div>
-        </section>
+  <div class="container">
+    <div id="login-container">
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required />
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+      <div id="login-error" class="error"></div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="dashboard" style="display: none;">
+      <h2>Bienvenido, <span id="user-name"></span></h2>
+      <p><strong>Rol:</strong> <span id="user-role"></span></p>
+      <p><strong>Saldo Total:</strong> <span id="user-balance"></span></p>
+      <p><strong>Detalle de Saldos:</strong> <span id="user-detail"></span></p>
+      <p><strong>Solicitudes Realizadas:</strong> <span id="user-requests"></span></p>
+      <button id="logout-btn">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
