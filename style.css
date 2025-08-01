@@ -1,363 +1,51 @@
-/* Variables de Color */
-:root {
-    --primary-blue: #2196F3; /* Azul vibrante */
-    --secondary-green: #4CAF50; /* Verde fresco */
-    --accent-grey: #607D8B; /* Gris oscuro para acentos */
-    --light-grey: #f4f7f6; /* Gris muy claro para fondos */
-    --white: #ffffff;
-    --dark-text: #333333;
-    --light-text: #666666;
-    --error-red: #f44336;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-/* Base y Tipografía */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    color: var(--dark-text);
-    background-color: var(--light-grey);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden; /* Evitar scroll horizontal */
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
-    padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Secciones (Login y Dashboard) */
-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    display: none;
-    background-color: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 8px 30px var(--shadow-color);
-    padding: 40px;
-    text-align: center;
+h2 {
+  text-align: center;
 }
 
-section.active {
-    opacity: 1;
-    transform: translateY(0);
-    display: block;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Login Card */
-.login-card {
-    max-width: 400px;
-    margin: 40px auto;
-    background: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px var(--shadow-color);
-    animation: fadeIn 0.8s ease-out;
+label {
+  margin-top: 10px;
 }
 
-.logo-placeholder {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 20px;
-    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-green));
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+input {
+  padding: 8px;
+  margin-top: 5px;
 }
 
-.logo-placeholder img {
-    max-width: 70%;
-    height: auto;
-    filter: invert(1); /* Para logos SVG simples, si el logo es complejo no lo uses */
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.login-card h2 {
-    color: var(--primary-blue);
-    margin-bottom: 10px;
-    font-size: 2.2em;
-    font-weight: 700;
+button:hover {
+  background-color: #005fa3;
 }
 
-.login-card p {
-    color: var(--light-text);
-    margin-bottom: 30px;
-    font-size: 1.1em;
-}
-
-.input-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--dark-text);
-    font-weight: 600;
-}
-
-.input-group input[type="text"],
-.input-group input[type="password"] {
-    width: 100%;
-    padding: 14px 18px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    background-color: var(--light-grey);
-}
-
-.input-group input:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
-    background-color: var(--white);
-}
-
-/* Botones */
-.btn {
-    padding: 14px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-}
-
-.primary-btn {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    width: 100%;
-    margin-top: 10px;
-}
-
-.primary-btn:hover {
-    background-color: #1976D2; /* Azul más oscuro */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
-}
-
-.logout-btn {
-    background-color: var(--accent-grey);
-    color: var(--white);
-    padding: 10px 20px;
-    font-size: 0.9em;
-}
-
-.logout-btn:hover {
-    background-color: #455A64; /* Gris más oscuro */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(96, 125, 139, 0.2);
-}
-
-.error-message {
-    color: var(--error-red);
-    margin-top: 15px;
-    font-size: 0.95em;
-    text-align: center;
-    opacity: 0;
-    animation: fadeShow 0.5s forwards;
-}
-
-/* Dashboard Header */
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 25px 40px;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-}
-
-.dashboard-header .user-info {
-    text-align: left;
-}
-
-.dashboard-header h1 {
-    font-size: 2.5em;
-    margin-bottom: 5px;
-    font-weight: 700;
-}
-
-.dashboard-header span {
-    font-size: 1.1em;
-    opacity: 0.9;
-}
-
-/* Dashboard Content */
-.dashboard-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 0 20px 40px;
-}
-
-.dashboard-block {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px var(--shadow-color);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 180px; /* Altura mínima para bloques */
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.dashboard-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 35px var(--shadow-color);
-}
-
-.dashboard-block h3 {
-    color: var(--primary-blue);
-    margin-bottom: 15px;
-    font-size: 1.5em;
-    font-weight: 600;
-}
-
-.dashboard-block p, .dashboard-block ul {
-    color: var(--light-text);
-    font-size: 1.1em;
-}
-
-.dashboard-block ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
-}
-
-.dashboard-block ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dashboard-block ul li:last-child {
-    border-bottom: none;
-}
-
-.dashboard-block ul li strong {
-    color: var(--dark-text);
-}
-
-.dashboard-block .icon-placeholder {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    opacity: 0.1;
-    transform: rotate(15deg);
-    z-index: 0;
-}
-
-.dashboard-block .icon-placeholder.green { background-color: var(--secondary-green); }
-.dashboard-block .icon-placeholder.blue { background-color: var(--primary-blue); }
-.dashboard-block .icon-placeholder.grey { background-color: var(--accent-grey); }
-
-
-/* Animaciones y Efectos */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeShow {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Media Queries para Responsive y Mobile First */
-
-/* Pantallas pequeñas (Mobile First) */
-@media (max-width: 767px) {
-    body {
-        padding: 15px;
-        align-items: flex-start; /* Ajustar para que el contenido no quede centrado verticalmente en pantallas pequeñas */
-    }
-
-    .container {
-        padding: 0;
-    }
-
-    .login-card {
-        padding: 30px 20px;
-        margin: 20px auto;
-    }
-
-    .login-card h2 {
-        font-size: 1.8em;
-    }
-
-    .login-card p {
-        font-size: 1em;
-    }
-
-    .dashboard-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-        border-radius: 8px 8px 0 0;
-        margin-bottom: 20px;
-    }
-
-    .dashboard-header h1 {
-        font-size: 1.8em;
-        margin-bottom: 10px;
-    }
-
-    .dashboard-header .logout-btn {
-        margin-top: 15px;
-        width: 100%;
-    }
-
-    .dashboard-content {
-        grid-template-columns: 1fr; /* Una columna en móviles */
-        padding: 0 15px 30px;
-    }
-
-    .dashboard-block {
-        padding: 25px;
-        min-height: unset; /* Quitar altura mínima en móviles */
-    }
-}
-
-/* Tablets y pantallas medianas */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .dashboard-content {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablets */
-    }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-    /* Los estilos por defecto ya están optimizados para desktop */
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
 }
