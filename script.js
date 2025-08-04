@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const users = await getSheetData();
       console.log('Info recibida' , users);
-      const user = users.find(u => u.username === username && u.password === password);
+      const user = users.find(u => 
+  u.username.trim() === username.trim() &&
+  String(u.password).trim() === String(password).trim()
+);
       console.log(user)
 
       if (user) {
