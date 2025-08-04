@@ -6,7 +6,7 @@ async function getSheetData() {
     const data = await res.json();
     console.log(data);
     console.log(res);
-   console.log('Respuesta RAW del Apps Script:', text); // ✅ VER EN CONSOLA
+   console.log('Respuesta RAW del Apps Script:', data); // ✅ VER EN CONSOLA
     return data;
   } catch (err) {
     console.error('Error al obtener datos:', err);
