@@ -23,10 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
       const errorElem = document.getElementById('login-error');
+      console.log(username);
+      console.log(password);
 
       errorElem.textContent = 'Verificando...';
 
       const users = await getSheetData();
+      console.log(users);
       const user = users.find(u => u.username === username && u.password === password);
 
       if (user) {
