@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const userData = JSON.parse(localStorage.getItem('userData'));
   if (userData && document.body.classList.contains('dashboard-page')) {
-    document.getElementById('user-name').textContent = userData.nombre;
+    document.getElementById('username').textContent = userData.username;
     document.getElementById('nombre').textContent = userData.nombre;
     document.getElementById('apellido').textContent = userData.apellido;
     document.getElementById('correo').textContent = userData.correo;
