@@ -1,10 +1,10 @@
-ameconst SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzylAPVfvUj8uCDBCr94AuwEn_W8_WDnR0LoN-Hp3y1RobUMYwAHr4ka6PBOTYdMzXDVw/exec'; // reemplaza con tu URL real
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzylAPVfvUj8uCDBCr94AuwEn_W8_WDnR0LoN-Hp3y1RobUMYwAHr4ka6PBOTYdMzXDVw/exec'; // reemplaza con tu URL real
 
 async function getSheetData() {
   try {
     const res = await fetch(SHEET_SCRIPT_URL);
     const data = await res.json();
-   // console.log('Respuesta RAW del Apps Script:', text); // ✅ VER EN CONSOLA
+   console.log('Respuesta RAW del Apps Script:', text); // ✅ VER EN CONSOLA
     return data;
   } catch (err) {
     console.error('Error al obtener datos:', err);
