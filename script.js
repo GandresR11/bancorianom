@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       errorElem.textContent = 'Verificando...';
 
       const users = await getSheetData();
-      console.log('Info recibida' + users);
+      console.log('Info recibida' , users);
       const user = users.find(u => u.username === username && u.password === password);
       console.log(user)
 
