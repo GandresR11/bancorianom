@@ -4,6 +4,8 @@ async function getSheetData() {
   try {
     const res = await fetch(SHEET_SCRIPT_URL);
     const data = await res.json();
+    console.log(data);
+    console.log(res);
    console.log('Respuesta RAW del Apps Script:', text); // ✅ VER EN CONSOLA
     return data;
   } catch (err) {
