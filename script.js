@@ -4,12 +4,12 @@ async function getSheetData() {
   try {
     const res = await fetch(SHEET_SCRIPT_URL);
     const data = await res.json();
-    console.log(data);
-    console.log(res);
-   console.log('Respuesta RAW del Apps Script:', data); // ✅ VER EN CONSOLA
+   // console.log(data);
+   // console.log(res);
+//   console.log('Respuesta RAW del Apps Script:', data); // ✅ VER EN CONSOLA
     return data;
   } catch (err) {
-    console.error('Error al obtener datos:', err);
+   // console.error('Error al obtener datos:', err);
     return [];
   }
 }
@@ -23,14 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
       const errorElem = document.getElementById('login-error');
-      console.log(username);
-      console.log(password);
+   //   console.log(username);
+    //  console.log(password);
 
       errorElem.textContent = 'Verificando...';
 
       const users = await getSheetData();
-      console.log(users);
+      console.log('Info recibida' + users);
       const user = users.find(u => u.username === username && u.password === password);
+      console.log(user)
 
       if (user) {
         localStorage.setItem('userData', JSON.stringify(user));
