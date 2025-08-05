@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (user) {
         localStorage.setItem('userData', JSON.stringify(user));
+        console.log(user);
         window.location.href = 'dashboard.html';
+        console.log(user);
       } else {
         errorElem.textContent = 'Usuario o clave incorrectos';
       }
