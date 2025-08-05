@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nombre').textContent = userData.nombre;
     document.getElementById('apellido').textContent = userData.apellido;
     document.getElementById('correo').textContent = userData.correo;
-    document.getElementById('ingresos').textContent = userData.ingresos;
-    document.getElementById('egresos').textContent = userData.egresos;
+    document.getElementById('asignado').textContent = userData.asignado;
+    document.getElementById('entregado').textContent = userData.entregado;
+    document.getElementById('saldo').textContent = userData.saldo;
 
     const solicitudes = document.getElementById('solicitudes');
     Object.entries(userData).forEach(([key, val]) => {
