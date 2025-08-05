@@ -5,39 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style1.css">
   
 </head>
-<body class="dashboard-page" id="dashboard-page">
-  <div class="dashboard-container fade-in">
-    <h2>Bienvenido querido, <span id="username"></span></h2>
+<body class="dashboard-page">
+   <div class="dashboard-container fade-in container">
+  <header ><h1>Perfil de Usuario <span id="username"></span></h1>
+        </header>
 
-    <section class="card">
+<main class="user-profile">
+    <section class="card profile-section">
       <h3>Datos Personales</h3>
       <p><strong>Nombre:</strong> <span id="nombre"></span></p>
       <p><strong>Apellido:</strong> <span id="apellido"></span></p>
       <p><strong>Correo:</strong> <span id="correo"></span></p>
     </section>
 
-    <section class="card">
+    <section class="card profile-section">
       <h3>Datos Financieros</h3>
       <p><strong>Asignación:</strong> $<span id="asignado"></span></p>
       <p><strong>Entregado:</strong> $<span id="entregado"></span></p>
       <p><strong>Saldo:</strong> $<span id="saldo"></span></p>
     </section>
 
-    <section class="card">
+    <section class="card profile-section">
       <h3>Resumen de Solicitudes</h3>
       <ul id="solicitudes"></ul>
     </section>
-  </div>
-    <div class="dashboard-container fade-in">
+  </main>
+<aside class="user-actions ">
    
 
-    <section class="card">
+    <section class="card ">
    
      <!-- Botón para editar datos -->
-<button id="editar-datos-btn">Editar Mis Datos</button>
+<button class="action-btn primary" id="editar-datos-btn">Editar Mis Datos</button>
 
 <!-- Formulario emergente (oculto por defecto) -->
 <div id="modal-editar" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5);">
@@ -74,7 +76,7 @@
     </section>
 
    
-  </div>
+  </aside>
    <script src="script.js"></script>
 </body>
 </html>
