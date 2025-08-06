@@ -166,7 +166,7 @@ console.log('Boton nueva solicitud presionado');
 
       const updatedUser = {
         ...userData,
-        solicitud: document.getElementById('nav-solicitud').value,
+        solicitud: document.getElementById('nav-solicitud').value
      
       };
 
