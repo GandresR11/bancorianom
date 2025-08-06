@@ -106,6 +106,25 @@ tbody tr:hover {
      border: 1px solid #00c9a7;
     height: fit-content;
 }
+.encabezado {
+  display: flex;
+  align-items: center;         /* Centra verticalmente los divs */
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f4f4f4;
+}
 
+.izquierda {
+  flex: 1;                     /* Ocupa 1 parte proporcional */
+  background-color: #cce5ff;
+  padding: 0.5rem;
+}
+
+.derecha {
+  flex: 2;                     /* Ocupa 2 partes proporcionales (el doble) */
+  background-color: #d4edda;
+  padding: 0.5rem;
+  text-align: right;          /* Alinea texto a la derecha */
+}
 
 
