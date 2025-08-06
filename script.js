@@ -153,7 +153,7 @@ console.log('Boton nueva solicitud presionado');
     nvaBtn.addEventListener('click', () => {
       modal.style.display = 'block';
       document.getElementById('nva-solicitud').value = userData.solicitud || '';
-
+ });
 
     // Cerrar el modal
     cerrarModalNva.addEventListener('click', () => {
@@ -167,7 +167,6 @@ console.log('Boton nueva solicitud presionado');
       const updatedUser = {
         ...userData,
         solicitud: document.getElementById('nav-solicitud').value
-     
       };
 
       try {
