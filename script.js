@@ -151,7 +151,7 @@ console.log('Boton nueva solicitud presionado');
   if (nvaBtn && modalnva && nvaForm && userData) {
     // Mostrar el modal con datos actuales
     nvaBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
+      modalnva.style.display = 'block';
       document.getElementById('nva-solicitud').value = userData.solicitud || '';
  });
 
