@@ -10,24 +10,10 @@
 </head>
 <body class="dashboard-page">
    <div class="dashboard-container fade-in container">
-  <header ><h1>Perfil de Usuario <span id="username"></span></h1>
-    <button id="nueva-solicitud-btn">Nueva Solicitud</button>
+    
+  <header > <div><h1>Perfil de Usuario <span id="username"></span></h1></div>
+   <div> <button id="cerrarsesion">Cerrar Sesión</button>
 
-<!-- Formulario emergente (oculto por defecto) -->
-<div id="modal-editar" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5);">
-  <div style="background:white; margin:100px auto; padding:20px; width:300px; border-radius:8px;">
-    <h3>Editar Mis Datos</h3>
-    <form id="editar-form">
-      <label>Nombre: <input type="text" id="edit-nombre" /></label><br />
-      <label>Apellido: <input type="text" id="edit-apellido" /></label><br />
-      <label>Correo: <input type="email" id="edit-correo" /></label><br />
-      <label>Ingresos: <input type="number" id="edit-ingresos" /></label><br />
-      <label>Egresos: <input type="number" id="edit-egresos" /></label><br /><br />
-      <button type="submit">Guardar Cambios</button>
-      <button type="button" id="cerrar-modal">Cancelar</button>
-    </form>
-  </div>
-</div>
         </header>
 
 <main class="user-profile">
