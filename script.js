@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nvaForm = document.getElementById('nva-form');
 
   const userData = JSON.parse(localStorage.getItem('userData'));
-
+console.log('Boton nueva solicitud presionado');
   if (nvaBtn && modalnva && nvaForm && userData) {
     // Mostrar el modal con datos actuales
     editarBtn.addEventListener('click', () => {
