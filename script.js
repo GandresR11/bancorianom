@@ -157,7 +157,7 @@ console.log('Boton nueva solicitud presionado');
 
     // Cerrar el modal
     cerrarModalNva.addEventListener('click', () => {
-      modal.style.display = 'none';
+      modalnva.style.display = 'none';
     });
 
     // Guardar cambios
