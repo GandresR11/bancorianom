@@ -2,7 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
+    //color: #fff;
     margin: 0;
     padding: 20px;
 }
@@ -111,18 +111,18 @@ tbody tr:hover {
   align-items: center;         /* Centra verticalmente los divs */
   justify-content: space-between;
   padding: 1rem;
-  background-color: #f4f4f4;
+//  background-color: #f4f4f4;
 }
 
 .izquierda {
-  flex: 1;                     /* Ocupa 1 parte proporcional */
-  background-color: #cce5ff;
+  flex: 6;                     /* Ocupa 1 parte proporcional */
+ // background-color: #cce5ff;
   padding: 0.5rem;
 }
 
 .derecha {
-  flex: 2;                     /* Ocupa 2 partes proporcionales (el doble) */
-  background-color: #d4edda;
+  flex: 1;                     /* Ocupa 2 partes proporcionales (el doble) */
+ // background-color: #d4edda;
   padding: 0.5rem;
   text-align: right;          /* Alinea texto a la derecha */
 }
