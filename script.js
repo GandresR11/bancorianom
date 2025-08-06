@@ -140,3 +140,64 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const nvaBtn = document.getElementById('nueva-solicitud-btn');
+  const modalnva = document.getElementById('modal-nvaslctd');
+  const cerrarModalNva = document.getElementById('cerrar-modalnva');
+  const nvaForm = document.getElementById('nva-form');
+
+  const userData = JSON.parse(localStorage.getItem('userData'));
+
+  if (nvaBtn && modalnva && nvaForm && userData) {
+    // Mostrar el modal con datos actuales
+    editarBtn.addEventListener('click', () => {
+      modal.style.display = 'block';
+      document.getElementById('edit-nombre').value = userData.nombre || '';
+      document.getElementById('edit-apellido').value = userData.apellido || '';
+      document.getElementById('edit-correo').value = userData.correo || '';
+      document.getElementById('edit-ingresos').value = userData.ingresos || '';
+      document.getElementById('edit-egresos').value = userData.egresos || '';
+    });
+
+    // Cerrar el modal
+    cerrarModalNva.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Guardar cambios
+    editarForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const updatedUser = {
+        ...userData,
+        nombre: document.getElementById('edit-nombre').value,
+        apellido: document.getElementById('edit-apellido').value,
+        correo: document.getElementById('edit-correo').value,
+        ingresos: document.getElementById('edit-ingresos').value,
+        egresos: document.getElementById('edit-egresos').value
+      };
+
+      try {
+        const response = await fetch('URL_DEL_ENDPOINT_MODIFICAR', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedUser)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          localStorage.setItem('userData', JSON.stringify(updatedUser));
+          alert('Datos actualizados correctamente');
+          window.location.href = 'dashboard.html';
+        } else {
+          alert('Error al actualizar los datos.');
+        }
+      } catch (err) {
+        console.error('Error actualizando:', err);
+        alert('Error en la conexión con el servidor.');
+      }
+    });
+  }
+});
+
