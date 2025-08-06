@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        const response = await fetch('URL_DEL_ENDPOINT_MODIFICAR', {
+        const response = await fetch('SHEET_SCRIPT_URL', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedUser)
@@ -170,7 +170,7 @@ console.log('Boton nueva solicitud presionado');
       };
 
       try {
-        const response = await fetch('URL_DEL_ENDPOINT_MODIFICAR', {
+        const response = await fetch('SHEET_SCRIPT_URL', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updatedUser)
