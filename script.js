@@ -150,14 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
 console.log('Boton nueva solicitud presionado');
   if (nvaBtn && modalnva && nvaForm && userData) {
     // Mostrar el modal con datos actuales
-    editarBtn.addEventListener('click', () => {
+    nvaBtn.addEventListener('click', () => {
       modal.style.display = 'block';
-      document.getElementById('edit-nombre').value = userData.nombre || '';
-      document.getElementById('edit-apellido').value = userData.apellido || '';
-      document.getElementById('edit-correo').value = userData.correo || '';
-      document.getElementById('edit-ingresos').value = userData.ingresos || '';
-      document.getElementById('edit-egresos').value = userData.egresos || '';
-    });
+      document.getElementById('nva-solicitud').value = userData.solicitud || '';
+
 
     // Cerrar el modal
     cerrarModalNva.addEventListener('click', () => {
@@ -165,16 +161,13 @@ console.log('Boton nueva solicitud presionado');
     });
 
     // Guardar cambios
-    editarForm.addEventListener('submit', async (e) => {
+    nvaForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const updatedUser = {
         ...userData,
-        nombre: document.getElementById('edit-nombre').value,
-        apellido: document.getElementById('edit-apellido').value,
-        correo: document.getElementById('edit-correo').value,
-        ingresos: document.getElementById('edit-ingresos').value,
-        egresos: document.getElementById('edit-egresos').value
+        solicitud: document.getElementById('nav-solicitud').value,
+     
       };
 
       try {
